@@ -1,0 +1,15 @@
+[Unit]
+Description=Kiwi IRC fileuploader
+After=network.target
+
+[Service]
+User=kiwiirc
+Group=kiwiirc
+ExecStart=/usr/bin/fileuploader --config=/etc/kiwiirc/fileuploader.config.toml
+ExecReload=/bin/kill -HUP $MAINPID
+WorkingDirectory=/usr/local/kiwiirc/
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
